@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop v2.7.1, Spark v1.5.2 and Nifi 0.4.0
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop v2.7.1, Spark v1.5.2 and Nifi 0.5.0
 
 * [Hadoop](http://hadoop.apache.org)
 * [Spark](http://spark.apache.org)
@@ -109,7 +109,7 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=0.4.0
+NIFI_VERSION=0.5.0
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
@@ -125,7 +125,7 @@ You can make the VM setup even faster if you pre-download the Hadoop, Spark, and
 2. `/resources/spark-1.5.2-bin-hadoop2.6.tgz`
 3. `/resources/jdk-7u79-linux-x64.gz`
 4. `/resources/kafka_2.10-0.8.2.2.tgz`
-5. `/resources/nifi-0.4.0-bin.tar.gz`
+5. `/resources/nifi-0.5.0-bin.tar.gz`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 
