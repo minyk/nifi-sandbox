@@ -27,14 +27,6 @@ RES_SSH_COPYID_ORIGINAL=$SSH_RES_DIR/ssh-copy-id.original
 RES_SSH_COPYID_MODIFIED=$SSH_RES_DIR/ssh-copy-id.modified
 RES_SSH_CONFIG=$SSH_RES_DIR/config
 
-#flume
-FLUME_VERSION=1.5.2
-FLUME_ARCHIVE=apache-flume-1.5.2-bin.tar.gz
-FLUME_MIRROR_DOWNLOAD=http://www.apache.org/dist/flume/1.5.2/apache-flume-1.5.2-bin.tar.gz
-FLUME_RES_DIR=/vagrant/resources/flume
-FLUME_HOME=/usr/local/flume
-FLUME_CONF=${FLUME_HOME}/conf
-
 #Kafka
 KAFKA_VERSION=0.8.2.2
 KAFKA_NAME=kafka_2.10-${KAFKA_VERSION}
