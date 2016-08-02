@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop v2.7.1, Spark v1.5.2 and Nifi 0.5.0
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop v2.7.1, Spark v1.5.1 and Nifi 0.7.0
 
 * [Hadoop](http://hadoop.apache.org)
 * [Spark](http://spark.apache.org)
@@ -14,7 +14,7 @@ Vagrant project to spin up a cluster of 1 virtual machine with Hadoop v2.7.1, Sp
 
 1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. [Download and install Vagrant](http://www.vagrantup.com/downloads.html).
-3. Run ```vagrant box add centos65 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box```
+3. Run ```vagrant box add ktykogm/centos6.8```
 4. Git clone this project, and change directory (cd) into this project (directory).
 5. Run ```vagrant up``` to create the VM.
 6. Run ```vagrant ssh``` to get into your VM.
@@ -31,7 +31,7 @@ Some gotcha's.
 
 # Advanced Stuff
 
-If you have the resources (CPU + Disk Space + Memory), you may modify Vagrantfile to have even more HDFS DataNodes, YARN NodeManagers, and Spark slaves. Just find the line that says "numNodes = 4" in Vagrantfile and increase that number. The scripts should dynamically provision the additional slaves for you.
+-If you have the resources (CPU + Disk Space + Memory), you may modify Vagrantfile to have even more HDFS DataNodes, YARN NodeManagers, and Spark slaves. Just find the line that says "numNodes = 4" in Vagrantfile and increase that number. The scripts should dynamically provision the additional slaves for you.-
 
 # How to Change Stack Versions
 
@@ -39,11 +39,10 @@ Edit variables in `scripts/common.sh`.
 
 ## OS
 
-`spark-notebook-sandbox` uses CentOS 6.5 for default. It can be changed to other version/distribution. Just edit the `Vagrantfile`'s following lines:
+`nifi-sandbox` uses CentOS 6.8 for default. It can be changed to other version/distribution. Just edit the `Vagrantfile`'s following lines:
 
 ```
-    node.vm.box = "centos65"
-    node.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
+    node.vm.box = "ktykogm/centos6.8"
 ```
 
 ## java
@@ -109,7 +108,7 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=0.5.0
+NIFI_VERSION=0.7.0
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
@@ -125,7 +124,7 @@ You can make the VM setup even faster if you pre-download the Hadoop, Spark, and
 2. `/resources/spark-1.5.2-bin-hadoop2.6.tgz`
 3. `/resources/jdk-7u79-linux-x64.gz`
 4. `/resources/kafka_2.10-0.8.2.2.tgz`
-5. `/resources/nifi-0.5.0-bin.tar.gz`
+5. `/resources/nifi-0.7.0-bin.tar.gz`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 

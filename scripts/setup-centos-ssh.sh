@@ -18,6 +18,10 @@ do
 done
 #echo "total nodes = $TOTAL_NODES"
 
+function installEPEL {
+    yum -y install epel-release
+}
+
 function installSSHPass {
 	yum -y install sshpass
 }
@@ -60,6 +64,7 @@ function sshCopyId {
 }
 
 echo "setup ssh"
+installEPEL
 installSSHPass
 createSSHKey
 overwriteSSHCopyId
