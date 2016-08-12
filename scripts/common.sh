@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #java
-JAVA_VERSION="7"
-JAVA_UPDATE="79"
+JAVA_VERSION="8"
+JAVA_UPDATE="91"
 JAVA_ARCHIVE=jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz
 JAVA_HOME="jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}"
 
@@ -15,7 +15,7 @@ HADOOP_MIRROR_DOWNLOAD=http://archive.apache.org/dist/hadoop/core/hadoop-${HADOO
 HADOOP_RES_DIR=/vagrant/resources/hadoop
 
 #spark
-SPARK_VERSION=1.5.2
+SPARK_VERSION=1.6.2
 SPARK_ARCHIVE=spark-${SPARK_VERSION}-bin-hadoop2.6.tgz
 SPARK_MIRROR_DOWNLOAD=http://www.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_ARCHIVE}
 SPARK_RES_DIR=/vagrant/resources/spark
@@ -46,7 +46,7 @@ CASSANDRA_HOME=/usr/local/cassandra
 CASSANDRA_CONF=${CASSANDRA_HOME}/conf
 
 #Nifi
-NIFI_VERSION=0.7.0
+NIFI_VERSION=1.0.0-BETA
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/nifi/${NIFI_VERSION}/${NIFI_ARCHIVE}
