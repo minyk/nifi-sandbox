@@ -2,7 +2,7 @@ Vagrant.require_version ">= 1.4.3"
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-	numNodes = 1
+	numNodes = 3
 	r = numNodes..1
 	(r.first).downto(r.last).each do |i|
 		config.vm.define "nifi-sandbox#{i}" do |node|
@@ -29,21 +29,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			end
 			node.vm.provision "shell", path: "scripts/setup-basic-packages.sh"
 			node.vm.provision "shell", path: "scripts/setup-java.sh"
-			node.vm.provision "shell", path: "scripts/setup-hadoop.sh"
-			node.vm.provision "shell" do |s|
-				s.path = "scripts/setup-hadoop-slaves.sh"
-				s.args = "-s 1 -t #{numNodes}"
-			end
-			node.vm.provision "shell", path: "scripts/setup-spark.sh"
-			node.vm.provision "shell" do |s|
-				s.path = "scripts/setup-spark-slaves.sh"
-				s.args = "-s 1 -t #{numNodes}"
-			end
-			node.vm.provision "shell", path: "scripts/setup-kafka.sh"
-			if i == 1
-			    node.vm.provision "shell", path: "scripts/setup-nifi.sh"
-				node.vm.provision "shell", path: "scripts/init-start-all-services.sh"
-			end
+			node.vm.provision "shell", path: "scripts/setup-nifi.sh"
+			node.vm.provision "shell", path: "scripts/init-start-all-services.sh"
+
 		end
 	end
 end
