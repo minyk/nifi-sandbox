@@ -3,10 +3,9 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Spark 1.6.2 and Nifi 1.0.0-BETA
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2 and Nifi 1.0.0
 
 * [Hadoop](http://hadoop.apache.org)
-* [Spark](http://spark.apache.org)
 * [Kafka](http://kafka.apache.org)
 * [Nifi](http://nifi.apache.org)
 
@@ -26,12 +25,12 @@ Some gotcha's.
 2. Make sure when you clone this project, you preserve the Unix/OSX end-of-line (EOL) characters. The scripts will fail with Windows EOL characters.
 3. Make sure you have 4Gb of free memory for the VM. You may change the Vagrantfile to specify smaller memory requirements.
 4. This project has NOT been tested with the VMWare provider for Vagrant.
-5. You may change the script (common.sh) to point to a different location for Hadoop and Spark to be downloaded from. Here is a list of mirrors for Hadoop: http://www.apache.org/dyn/closer.cgi/hadoop/common/.
+5. You may change the script (common.sh) to point to a different location for Hadoop, Kafka and Nifi to be downloaded from. Here is a list of mirrors for Hadoop: http://www.apache.org/dyn/closer.cgi/hadoop/common/.
 6. Basically, Hadoop YARN is installed, but not started. If you want YARN Service, uncomment YARN section of `scripts/init-start-all-services.sh` and `scripts/start-all-services.sh`.
 
 # Advanced Stuff
 
--If you have the resources (CPU + Disk Space + Memory), you may modify Vagrantfile to have even more HDFS DataNodes, YARN NodeManagers, and Spark slaves. Just find the line that says "numNodes = 4" in Vagrantfile and increase that number. The scripts should dynamically provision the additional slaves for you.-
+-If you have the resources (CPU + Disk Space + Memory), you may modify Vagrantfile to have even more HDFS DataNodes, YARN NodeManagers. Just find the line that says "numNodes = 4" in Vagrantfile and increase that number. The scripts should dynamically provision the additional slaves for you.-
 
 # How to Change Stack Versions
 
@@ -75,18 +74,6 @@ HADOOP_MIRROR_DOWNLOAD=http://archive.apache.org/dist/hadoop/core/hadoop-${HADOO
 
 To build the sandbox, Make sure `HADOOP_MIRROR_DOWNLOAD` is available for downloading.
 
-## Spark
-
-Spark version is described in `scripts/common.sh`: 
-
-```bash
-SPARK_VERSION=1.6.2
-SPARK_ARCHIVE=spark-${SPARK_VERSION}-bin-hadoop2.6.tgz
-SPARK_MIRROR_DOWNLOAD=http://www.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_ARCHIVE}
-```
-
-To build the sandbox, Make sure `SPARK_MIRROR_DOWNLOAD` is available for downloading.
-
 ## Kafka
 
 Kafka version is described in `scripts/common.sh`
@@ -118,10 +105,9 @@ NIFI_CONF=$NIFI_HOME/config
 ```
 
 # Make the VMs setup faster
-You can make the VM setup even faster if you pre-download the Hadoop, Spark, and Oracle JDK into the `/resources` directory.
+You can make the VM setup even faster if you pre-download the Hadoop, Kafka and Oracle JDK into the `/resources` directory.
 
 1. `/resources/hadoop-2.7.1.tar.gz`
-2. `/resources/spark-1.6.2-bin-hadoop2.6.tgz`
 3. `/resources/jdk-8u91-linux-x64.gz`
 4. `/resources/kafka_2.10-0.8.2.2.tgz`
 5. `/resources/nifi-1.0.0-BETA-bin.tar.gz`
@@ -132,9 +118,7 @@ The setup script will automatically detect if these files (with precisely the sa
 You can check the following URLs to monitor the Hadoop daemons.
 
 1. [NameNode] (http://10.10.10.101:50070/dfshealth.html)
-2. [Spark] (http://10.10.10.101:8080)
-3. [Spark History] (http://10.10.10.101:18080)
-4. [Nifi] (http://10.10.10.101:8888)
+2. [Nifi] (http://10.10.10.101:8888)
 
 # Vagrant box location
 The Vagrant box is downloaded to the `~/.vagrant.d/boxes` directory. On Windows, this is `C:/Users/{your-username}/.vagrant.d/boxes`.

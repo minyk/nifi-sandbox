@@ -34,11 +34,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 				s.path = "scripts/setup-hadoop-slaves.sh"
 				s.args = "-s 1 -t #{numNodes}"
 			end
-			node.vm.provision "shell", path: "scripts/setup-spark.sh"
-			node.vm.provision "shell" do |s|
-				s.path = "scripts/setup-spark-slaves.sh"
-				s.args = "-s 1 -t #{numNodes}"
-			end
 			node.vm.provision "shell", path: "scripts/setup-kafka.sh"
 			if i == 1
 			    node.vm.provision "shell", path: "scripts/setup-nifi.sh"

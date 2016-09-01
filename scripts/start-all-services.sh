@@ -18,15 +18,14 @@
 # Required-Stop:
 # Default-Start: 2 3 4 5
 # Default-Stop: 0 1 6
-# Short-Description: start and stop hadoop/spark
-# Description: Start, stop hadoop/spark
+# Short-Description: start and stop hadoop/kafka/nifi
+# Description: Start, stop hadoop/kafka/nifi
 ### END INIT INFO
 
 . /etc/init.d/functions
 
 source /etc/profile.d/java.sh
 source /etc/profile.d/hadoop.sh
-source /etc/profile.d/spark.sh
 source /etc/profile.d/kafka.sh
 source /etc/profile.d/nifi.sh
 
@@ -61,18 +60,6 @@ function stop_yarn() {
 	echo "stopped yarn"
 }
 
-function start_spark() {
-	$EXEC "$SPARK_HOME/sbin/start-all.sh"
-	$EXEC "$SPARK_HOME/sbin/start-history-server.sh"
-	echo "started spark"
-}
-
-function stop_spark() {
-	$EXEC "$SPARK_HOME/sbin/stop-all.sh"
-	$EXEC "$SPARK_HOME/sbin/stop-history-server.sh"
-	echo "stopped spark"
-}
-
 function start_kafka {
     $EXEC "$KAFKA_HOME/start-kafka.sh"
 }
@@ -92,7 +79,6 @@ function stop_nifi {
 start() {
     start_hdfs
     #start_yarn
-    start_spark
     start_kafka
     start_nifi
 	return 0
@@ -100,7 +86,6 @@ start() {
 
 stop() {
     stop_kafka
-    stop_spark
     #stop_yarn
     stop_hdfs
     stop_nifi

@@ -2,7 +2,6 @@
 source "/vagrant/scripts/common.sh"
 source /etc/profile.d/java.sh
 source /etc/profile.d/hadoop.sh
-source /etc/profile.d/spark.sh
 source /etc/profile.d/kafka.sh
 source /etc/profile.d/nifi.sh
 
@@ -27,14 +26,7 @@ function startYarn {
 
 function createEventLogDir {
 	$HADOOP_PREFIX/bin/hdfs dfs -mkdir /tmp
-	$HADOOP_PREFIX/bin/hdfs dfs -mkdir /tmp/spark-events
-	echo "created spark event log dir"
-}
-
-function startSpark {
-	$SPARK_HOME/sbin/start-all.sh
-	$SPARK_HOME/sbin/start-history-server.sh
-	echo "started spark"
+	echo "created tmp dir"
 }
 
 
@@ -58,7 +50,6 @@ formatNameNode
 startHDFS
 #startYarn
 createEventLogDir
-startSpark
 startKafka
 startNifi
 setupServices

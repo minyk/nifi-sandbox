@@ -2,13 +2,13 @@
 source "/vagrant/scripts/common.sh"
 
 function installLocalKafka {
-	echo "install spark from local file"
+	echo "install kafka from local file"
 	FILE=/vagrant/resources/$KAFKA_ARCHIVE
 	tar -xzf $FILE -C /usr/local
 }
 
 function installRemoteKafka {
-	echo "install spark from remote file"
+	echo "install kafka from remote file"
 	curl -o /vagrant/resources/$KAFKA_ARCHIVE -O -L $KAFKA_MIRROR_DOWNLOAD
 	tar -xzf /vagrant/resources/$KAFKA_ARCHIVE -C /usr/local
 }
