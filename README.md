@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2 and Nifi 1.0.0
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2 and Nifi 1.1.0
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
@@ -50,7 +50,7 @@ Default settings use `jdk-8u91-linux-x64.tar.gz` or `java-1.8.0-openjdk.x86_64`.
 
 ```
 #java
-JAVA_ARCHIVE=jdk-7u71-linux-x64.tar.gz
+JAVA_ARCHIVE=jdk-8u91-linux-x64.tar.gz
 ```
 
 In case of OpenJDK, edit `scripts/setup-java.sh`:
@@ -58,7 +58,7 @@ In case of OpenJDK, edit `scripts/setup-java.sh`:
 ```bash
 function installRemoteJava {
 	echo "install open jdk"
-	yum install -y java-1.7.0-openjdk.x86_64
+	yum install -y java-1.8.0-openjdk.x86_64
 }
 ```
 
@@ -95,7 +95,7 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=1.0.0-BETA
+NIFI_VERSION=1.1.0
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
@@ -110,7 +110,7 @@ You can make the VM setup even faster if you pre-download the Hadoop, Kafka and 
 1. `/resources/hadoop-2.7.1.tar.gz`
 3. `/resources/jdk-8u91-linux-x64.gz`
 4. `/resources/kafka_2.10-0.8.2.2.tgz`
-5. `/resources/nifi-1.0.0-BETA-bin.tar.gz`
+5. `/resources/nifi-1.1.0-bin.tar.gz`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 
