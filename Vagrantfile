@@ -6,8 +6,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	r = numNodes..1
 	(r.first).downto(r.last).each do |i|
 		config.vm.define "nifi-sandbox#{i}" do |node|
-			node.vm.box = "ktykogm/centos6.8"
-			#node.vm.box_url = "https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
+			node.vm.box = "centos/7"
 			node.vm.provider "virtualbox" do |v|
 			  v.name = "nifi-sandbox#{i}"
 			  v.customize ["modifyvm", :id, "--memory", "4096"]
