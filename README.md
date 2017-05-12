@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2 and Nifi 1.1.0
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2 and Nifi 1.2.0
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
@@ -13,7 +13,7 @@ Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kaf
 
 1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. [Download and install Vagrant](http://www.vagrantup.com/downloads.html).
-3. Run ```vagrant box add ktykogm/centos6.8```
+3. Run ```vagrant box add centos/7```
 4. Git clone this project, and change directory (cd) into this project (directory).
 5. Run ```vagrant up``` to create the VM.
 6. Run ```vagrant ssh``` to get into your VM.
@@ -41,7 +41,7 @@ Edit variables in `scripts/common.sh`.
 `nifi-sandbox` uses CentOS 6.8 for default. It can be changed to other version/distribution. Just edit the `Vagrantfile`'s following lines:
 
 ```
-    node.vm.box = "ktykogm/centos6.8"
+    node.vm.box = "centos/7"
 ```
 
 ## java
@@ -64,7 +64,7 @@ function installRemoteJava {
 
 ## hadoop
 
-Hadoop version is described in `scripts/common.sh`: 
+Hadoop version is described in `scripts/common.sh`:
 
 ```bash
 HADOOP_VERSION=2.7.1
@@ -95,7 +95,7 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=1.1.0
+NIFI_VERSION=1.2.0
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
@@ -110,7 +110,7 @@ You can make the VM setup even faster if you pre-download the Hadoop, Kafka and 
 1. `/resources/hadoop-2.7.1.tar.gz`
 3. `/resources/jdk-8u91-linux-x64.gz`
 4. `/resources/kafka_2.10-0.8.2.2.tgz`
-5. `/resources/nifi-1.1.0-bin.tar.gz`
+5. `/resources/nifi-1.2.0-bin.tar.gz`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 
@@ -118,7 +118,7 @@ The setup script will automatically detect if these files (with precisely the sa
 You can check the following URLs to monitor the Hadoop daemons.
 
 1. [NameNode] (http://10.10.10.101:50070/dfshealth.html)
-2. [Nifi] (http://10.10.10.101:8888)
+2. [Nifi] (http://10.10.10.101:8888/nifi)
 
 # Vagrant box location
 The Vagrant box is downloaded to the `~/.vagrant.d/boxes` directory. On Windows, this is `C:/Users/{your-username}/.vagrant.d/boxes`.
