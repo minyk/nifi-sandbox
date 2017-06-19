@@ -9,7 +9,7 @@ JAVA_HOME="jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}"
 #hadoop
 HADOOP_PREFIX=/usr/local/hadoop
 HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop
-HADOOP_VERSION=2.7.1
+HADOOP_VERSION=2.7.3
 HADOOP_ARCHIVE=hadoop-${HADOOP_VERSION}.tar.gz
 HADOOP_MIRROR_DOWNLOAD=http://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/${HADOOP_ARCHIVE}
 HADOOP_RES_DIR=/vagrant/resources/hadoop
