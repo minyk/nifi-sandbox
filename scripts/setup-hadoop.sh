@@ -21,14 +21,17 @@ function setupHadoop {
 	mkdir /var/hadoop/mr-history
 	mkdir /var/hadoop/mr-history/done
 	mkdir /var/hadoop/mr-history/tmp
-	
+
 	echo "copying over hadoop configuration files"
 	cp -f ${HADOOP_RES_DIR}/* ${HADOOP_CONF_DIR}
+
+	cp -f ${HADOOP_RES_DIR}/hdfs-namenode.service /etc/systemd/system/hdfs-namenode.service
+	cp -f ${HADOOP_RES_DIR}/hdfs-datanode.service /etc/systemd/system/hdfs-datanode.service
 }
 
 function setupEnvVars {
 	echo "creating hadoop environment variables"
-	cp -f ${HADOOP_RES_DIR}/hadoop.sh /etc/profile.d/hadoop.sh
+	cp -f ${HADOOP_RES_DIR}/hadoop.default /etc/default/hadoop
 }
 
 function installHadoop {

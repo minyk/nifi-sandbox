@@ -1,0 +1,17 @@
+[Unit]
+Description=HDFS Service: distributed file system.
+
+[Service]
+Restart=always
+StartLimitInterval=0
+RestartSec=15
+LimitNOFILE=infinity
+PermissionsStartOnly=True
+SyslogIdentifier=hdfs
+EnvironmentFile=/etc/default/java
+EnvironmentFile=/etc/default/hadoop
+ExecStartPre=/bin/echo ${HADOOP_CONF_DIR}
+ExecStart=/usr/local/hadoop/bin/hdfs --config $HADOOP_CONF_DIR namenode
+
+[Install]
+WantedBy=default.target

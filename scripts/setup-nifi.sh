@@ -15,13 +15,12 @@ function installRemoteNifi {
 }
 
 function setupNifi {
-	echo "copying over nifi configuration files"
-#	cp -f ${NIFI_RES_DIR}/flume-env.sh ${NIFI_CONF}/flume-env.sh
+	echo "install Nifi service"
+	${NIFI_HOME}/bin/nifi.sh install
 }
 
 function setupEnvVars {
 	echo "creating nifi environment variables"
-	cp -f ${NIFI_RES_DIR}/nifi.sh /etc/profile.d/nifi.sh
 	cp -f ${NIFI_RES_DIR}/${NIFI_NAME}.properties ${NIFI_HOME}/conf/nifi.properties
 }
 

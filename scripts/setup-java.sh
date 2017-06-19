@@ -24,8 +24,7 @@ function setupJava {
 
 function setupEnvVars {
 	echo "creating java environment variables"
-	echo export JAVA_HOME=/usr/local/java >> /etc/profile.d/java.sh
-	echo export PATH=\${JAVA_HOME}/bin:\${PATH} >> /etc/profile.d/java.sh
+	echo JAVA_HOME=/usr/local/java >> /etc/default/java
 }
 
 function installJava {

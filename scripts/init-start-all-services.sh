@@ -1,55 +1,43 @@
 #!/bin/bash
 source "/vagrant/scripts/common.sh"
-source /etc/profile.d/java.sh
-source /etc/profile.d/hadoop.sh
-source /etc/profile.d/kafka.sh
-source /etc/profile.d/nifi.sh
 
 function formatNameNode {
-	$HADOOP_PREFIX/bin/hdfs namenode -format myhadoop -force -noninteractive
+	/usr/local/hadoop/bin/hdfs namenode -format myhadoop -force -noninteractive
 	echo "formatted namenode"
 }
 
-function startHDFS {
-	$HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
-	$HADOOP_PREFIX/sbin/hadoop-daemons.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
-	echo "started hdfs"
-}
+function startServices {
 
-function startYarn {
-	$HADOOP_YARN_HOME/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start resourcemanager
-	$HADOOP_YARN_HOME/sbin/yarn-daemons.sh --config $HADOOP_CONF_DIR start nodemanager
-	$HADOOP_YARN_HOME/sbin/yarn-daemon.sh start proxyserver --config $HADOOP_CONF_DIR
-	$HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh start historyserver --config $HADOOP_CONF_DIR
-	echo "started yarn"
+  # Start HDFS
+	systemctl start hdfs-namenode.service
+	systemctl start hdfs-datanode.service
+
+  # Start kafka
+	systemctl start zookeeper.service
+  systemctl start kafka.service
+
+  # Start nifi
+	systemctl start nifi
 }
 
 function createEventLogDir {
-	$HADOOP_PREFIX/bin/hdfs dfs -mkdir /tmp
+	/usr/local/hadoop/bin/hdfs dfs -mkdir /tmp
 	echo "created tmp dir"
 }
 
-
-function startKafka {
-    $KAFKA_HOME/start-kafka.sh
-    echo "started kafka"
-}
-
-function startNifi {
-    $NIFI_HOME/bin/nifi.sh start
-
-}
-
 function setupServices {
-    cp -f /vagrant/scripts/start-all-services.sh /etc/init.d/start-all-services
-    chmod a+x /etc/init.d/start-all-services
-    chkconfig start-all-services on
+  # Refresh services
+	systemctl daemon-reload
+
+	# Enable services
+	systemctl enable hdfs-namenode.service
+	systemctl enable hdfs-datanode.service
+	systemctl enable zookeeper.service
+	systemctl enable kafka.service
+	systemctl enable nifi
 }
 
-formatNameNode
-startHDFS
-#startYarn
-createEventLogDir
-startKafka
-startNifi
 setupServices
+formatNameNode
+startServices
+createEventLogDir

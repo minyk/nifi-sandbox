@@ -1,0 +1,6 @@
+HADOOP_PREFIX=/usr/local/hadoop
+HADOOP_YARN_HOME=/usr/local/hadoop
+HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop
+YARN_LOG_DIR=/usr/local/hadoop/logs
+YARN_IDENT_STRING=root
+HADOOP_MAPRED_IDENT_STRING=root

@@ -1,0 +1,9 @@
+KAFKA_HOME=/usr/local/kafka
+LOG_DIR=/usr/local/kafka/logs
+ZK_LOG_FILE=/usr/local/kafka/logs/zookeeper.log
+KAFKA_LOG_FILE=/usr/local/kafka/logs/kafka.log
+ZK_PID_FILE=/usr/local/kafka/zookeeper.pid
+KAFKA_PID_FILE=/usr/local/kafka/kafka.pid
+CONF_DIR=/usr/local/kafka/config
+ZOOKEEPER_EXEC_PATH=/usr/local/kafka/bin/zookeeper-server-start.sh
+KAFKA_EXEC_PATH=/usr/local/kafka/bin/kafka-server-start.sh

@@ -1,0 +1,17 @@
+[Unit]
+Description=Kafka Service: distributed message queue
+After=zookeeper.service
+
+[Service]
+Restart=always
+StartLimitInterval=0
+RestartSec=15
+LimitNOFILE=infinity
+PermissionsStartOnly=True
+SyslogIdentifier=kafka
+EnvironmentFile=/etc/default/java
+EnvironmentFile=/etc/default/kafka
+ExecStart=/usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties
+
+[Install]
+WantedBy=default.target
