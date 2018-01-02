@@ -6,13 +6,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	r = numNodes..1
 	(r.first).downto(r.last).each do |i|
 		config.vm.define "nifi-sandbox#{i}" do |node|
-			node.vm.box = "centos/7"
+			node.vm.box = "geerlingguy/centos7"
 			node.vm.provider "virtualbox" do |v|
 			  v.name = "nifi-sandbox#{i}"
 			  v.customize ["modifyvm", :id, "--memory", "4096"]
 			  v.customize ["modifyvm", :id, "--cpus", 1]
 			end
-
+                        node.vm.synced_folder '.', '/vagrant', type: :virtualbox
 			node.vm.network :private_network, ip: "10.10.10.1%02d" % i
 			node.vm.hostname = "nifi-sandbox#{i}.example.com"
 			node.vm.provision "shell", path: "scripts/setup-centos.sh"
