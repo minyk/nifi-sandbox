@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2 and Nifi 1.2.0
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2 and Nifi 1.4.0
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
@@ -13,7 +13,7 @@ Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kaf
 
 1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. [Download and install Vagrant](http://www.vagrantup.com/downloads.html).
-3. Run ```vagrant box add centos/7```
+3. Run ```vagrant box add geerlingguy/centos7```
 4. Git clone this project, and change directory (cd) into this project (directory).
 5. Run ```vagrant up``` to create the VM.
 6. Run ```vagrant ssh``` to get into your VM.
@@ -21,7 +21,7 @@ Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kaf
 
 Some gotcha's.
 
-1. Make sure you download Vagrant v1.4.3 or higher.
+1. Make sure you download Vagrant v1.9.0 or higher.
 2. Make sure when you clone this project, you preserve the Unix/OSX end-of-line (EOL) characters. The scripts will fail with Windows EOL characters.
 3. Make sure you have 4Gb of free memory for the VM. You may change the Vagrantfile to specify smaller memory requirements.
 4. This project has NOT been tested with the VMWare provider for Vagrant.
@@ -41,8 +41,10 @@ Edit variables in `scripts/common.sh`.
 `nifi-sandbox` uses CentOS 6.8 for default. It can be changed to other version/distribution. Just edit the `Vagrantfile`'s following lines:
 
 ```
-    node.vm.box = "centos/7"
+    node.vm.box = "geerlingguy/centos7"
 ```
+
+Make sure the OS box has virtualbox guest addition.
 
 ## java
 
@@ -95,7 +97,7 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=1.2.0
+NIFI_VERSION=1.4.0
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
@@ -110,7 +112,7 @@ You can make the VM setup even faster if you pre-download the Hadoop, Kafka and 
 1. `/resources/hadoop-2.7.1.tar.gz`
 3. `/resources/jdk-8u91-linux-x64.gz`
 4. `/resources/kafka_2.10-0.8.2.2.tgz`
-5. `/resources/nifi-1.2.0-bin.tar.gz`
+5. `/resources/nifi-1.4.0-bin.tar.gz`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 

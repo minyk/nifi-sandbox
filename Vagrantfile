@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			  v.customize ["modifyvm", :id, "--memory", "4096"]
 			  v.customize ["modifyvm", :id, "--cpus", 1]
 			end
-                        node.vm.synced_folder '.', '/vagrant', type: :virtualbox
+      node.vm.synced_folder '.', '/vagrant', type: :virtualbox
 			node.vm.network :private_network, ip: "10.10.10.1%02d" % i
 			node.vm.hostname = "nifi-sandbox#{i}.example.com"
 			node.vm.provision "shell", path: "scripts/setup-centos.sh"
