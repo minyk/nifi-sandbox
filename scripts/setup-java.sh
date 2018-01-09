@@ -9,7 +9,7 @@ function installLocalJava {
 
 function installRemoteJava {
 	echo "install open jdk"
-	yum install -y java-1.8.0-openjdk.x86_64
+	yum install -y java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel
 }
 
 function setupJava {

@@ -35,7 +35,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			end
 			node.vm.provision "shell", path: "scripts/setup-kafka.sh"
 			if i == 1
-			    node.vm.provision "shell", path: "scripts/setup-nifi.sh"
+			  node.vm.provision "shell", path: "scripts/setup-nifi.sh"
+				node.vm.provision "shell", path: "scripts/setup-nifi-registry.sh"
 				node.vm.provision "shell", path: "scripts/init-start-all-services.sh"
 			end
 		end

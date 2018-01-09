@@ -22,6 +22,7 @@ function setupNifi {
 function setupEnvVars {
 	echo "creating nifi environment variables"
 	cp -f ${NIFI_RES_DIR}/${NIFI_NAME}.properties ${NIFI_HOME}/conf/nifi.properties
+	cp -f ${NIFI_RES_DIR}/nifi-env.sh ${NIFI_HOME}/bin/nifi-env.sh
 }
 
 function installNifi {

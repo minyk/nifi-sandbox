@@ -2,7 +2,7 @@
 
 #java
 JAVA_VERSION="8"
-JAVA_UPDATE="91"
+JAVA_UPDATE="151"
 JAVA_ARCHIVE=jdk-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz
 JAVA_HOME="jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}"
 
@@ -45,8 +45,16 @@ NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/nifi/${NIFI_VERSION}/${NIFI_ARCHIVE}
 NIFI_RES_DIR=/vagrant/resources/nifi
 NIFI_HOME=/usr/local/nifi
-NIFI_CONF=$NIFI_HOME/config
+NIFI_CONF=$NIFI_HOME/conf
 
+#Nifi Registry
+NIFI_REGISTRY_VERSION=0.1.0
+NIFI_REGISTRY_NAME=nifi-registry-${NIFI_REGISTRY_VERSION}
+NIFI_REGISTRY_ARCHIVE=${NIFI_REGISTRY_NAME}-bin.tar.gz
+NIFI_REGISTRY_MIRROR_DOWNLOAD=http://www.apache.org/dist/nifi/${NIFI_REGISTRY_VERSION}/${NIFI_REGISTRY_ARCHIVE}
+NIFI_REGISTRY_RES_DIR=/vagrant/resources/nifi
+NIFI_REGISTRY_HOME=/usr/local/nifi-registry
+NIFI_REGISTRY_CONF=${NIFI_REGISTRY_HOME}/conf
 
 function resourceExists {
 	FILE=/vagrant/resources/$1

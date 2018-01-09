@@ -18,6 +18,9 @@ function startServices {
 
   # Start nifi
 	systemctl start nifi
+
+	# Start nifi-registry
+	systemctl start nifi-registry
 }
 
 function createEventLogDir {
@@ -35,6 +38,7 @@ function setupServices {
 	systemctl enable zookeeper.service
 	systemctl enable kafka.service
 	systemctl enable nifi
+	systemctl enable nifi-registry
 }
 
 setupServices

@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2 and Nifi 1.4.0
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2, Nifi 1.4.0 and Nifi Registry 0.1.0
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
@@ -121,6 +121,7 @@ You can check the following URLs to monitor the Hadoop daemons.
 
 1. [NameNode] (http://10.10.10.101:50070/dfshealth.html)
 2. [Nifi] (http://10.10.10.101:8888/nifi)
+3. [NifiRegistry] (http://10.10.10.101:18080/nifi-registry)
 
 # Vagrant box location
 The Vagrant box is downloaded to the `~/.vagrant.d/boxes` directory. On Windows, this is `C:/Users/{your-username}/.vagrant.d/boxes`.
