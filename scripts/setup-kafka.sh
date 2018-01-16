@@ -15,8 +15,8 @@ function installRemoteKafka {
 
 function setupKafka {
 	echo "setup kafka"
-	cp -f ${KAFKA_RES_DIR}/server.properties /usr/local/kafka/config
-	cp -f ${KAFKA_RES_DIR}/zookeeper.properties /usr/local/kafka/config
+#	cp -f ${KAFKA_RES_DIR}/server.properties /usr/local/kafka/config
+#	cp -f ${KAFKA_RES_DIR}/zookeeper.properties /usr/local/kafka/config
 	mkdir -p ${KAFKA_HOME}/logs
 
 	cp -f ${KAFKA_RES_DIR}/zookeeper.service /etc/systemd/system/zookeeper.service

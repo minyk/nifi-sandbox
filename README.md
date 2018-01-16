@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 0.8.2.2, Nifi 1.4.0 and Nifi Registry 0.1.0
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 1.0.0, Nifi 1.5.0 and Nifi Registry 0.1.0
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
@@ -82,7 +82,7 @@ Kafka version is described in `scripts/common.sh`
 
 ```bash
 #Kafka
-KAFKA_VERSION=0.8.2.2
+KAFKA_VERSION=1.0.0
 KAFKA_NAME=kafka_2.10-${KAFKA_VERSION}
 KAFKA_ARCHIVE=${KAFKA_NAME}.tgz
 KAFKA_MIRROR_DOWNLOAD=http://www.apache.org/dist/kafka/${KAFKA_VERSION}/${KAFKA_ARCHIVE}
@@ -97,7 +97,7 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=1.4.0
+NIFI_VERSION=1.5.0
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
@@ -109,10 +109,10 @@ NIFI_CONF=$NIFI_HOME/config
 # Make the VMs setup faster
 You can make the VM setup even faster if you pre-download the Hadoop, Kafka and Oracle JDK into the `/resources` directory.
 
-1. `/resources/hadoop-2.7.1.tar.gz`
-3. `/resources/jdk-8u91-linux-x64.gz`
-4. `/resources/kafka_2.10-0.8.2.2.tgz`
-5. `/resources/nifi-1.4.0-bin.tar.gz`
+1. `/resources/hadoop-2.7.3.tar.gz`
+3. `/resources/jdk-8u152-linux-x64.gz`
+4. `/resources/kafka_2.11-1.0.0.tgz`
+5. `/resources/nifi-1.5.0-bin.tar.gz`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 
@@ -120,7 +120,7 @@ The setup script will automatically detect if these files (with precisely the sa
 You can check the following URLs to monitor the Hadoop daemons.
 
 1. [NameNode] (http://10.10.10.101:50070/dfshealth.html)
-2. [Nifi] (http://10.10.10.101:8888/nifi)
+2. [Nifi] (http://10.10.10.101:8080/nifi)
 3. [NifiRegistry] (http://10.10.10.101:18080/nifi-registry)
 
 # Vagrant box location
