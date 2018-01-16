@@ -9,6 +9,8 @@ Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kaf
 * [Kafka](http://kafka.apache.org)
 * [Nifi](http://nifi.apache.org)
 
+Currently, Nifi and Nifi Registry integration needs to be setup by manually. See this document: https://community.hortonworks.com/articles/161761/new-features-in-apache-nifi-15-apache-nifi-registr.html Nifi Registry should be running at http://localhost:18080.
+
 # Getting Started
 
 1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
