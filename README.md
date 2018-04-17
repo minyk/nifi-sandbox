@@ -3,11 +3,12 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.1, Kafka 1.0.0, Nifi 1.5.0 and Nifi Registry 0.1.0
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.3, Kafka 1.0.0, Nifi 1.6.0 and Nifi Registry 0.1.0.
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
 * [Nifi](http://nifi.apache.org)
+* [Nifi-Registry](http://nifi.apache.org/registry.html)
 
 Currently, Nifi and Nifi Registry integration needs to be setup by manually. See this document: https://community.hortonworks.com/articles/161761/new-features-in-apache-nifi-15-apache-nifi-registr.html Nifi Registry should be running at http://localhost:18080.
 
@@ -71,7 +72,7 @@ function installRemoteJava {
 Hadoop version is described in `scripts/common.sh`:
 
 ```bash
-HADOOP_VERSION=2.7.1
+HADOOP_VERSION=2.7.3
 HADOOP_ARCHIVE=hadoop-${HADOOP_VERSION}.tar.gz
 HADOOP_MIRROR_DOWNLOAD=http://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/${HADOOP_ARCHIVE}
 ```
@@ -99,7 +100,7 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=1.5.0
+NIFI_VERSION=1.6.0
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
@@ -114,7 +115,7 @@ You can make the VM setup even faster if you pre-download the Hadoop, Kafka and 
 1. `/resources/hadoop-2.7.3.tar.gz`
 3. `/resources/jdk-8u152-linux-x64.gz`
 4. `/resources/kafka_2.11-1.0.0.tgz`
-5. `/resources/nifi-1.5.0-bin.tar.gz`
+5. `/resources/nifi-1.6.0-bin.tar.gz`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 
