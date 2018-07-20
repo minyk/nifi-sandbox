@@ -25,6 +25,13 @@ function setupEnvVars {
 	cp -f ${NIFI_RES_DIR}/nifi-env.sh ${NIFI_HOME}/bin/nifi-env.sh
 }
 
+function addNars {
+	echo "adding /vagrant/nars to nifi.nar.library.directory"
+	echo "" >> ${NIFI_HOME}/conf/nifi.properties
+	echo "nifi.nar.library.directory.add=/vagrant/nars" >> ${NIFI_HOME}/conf/nifi.properties
+	echo "" >> ${NIFI_HOME}/conf/nifi.properties
+}
+
 function installNifi {
 	if resourceExists ${NIFI_ARCHIVE}; then
 		installLocalNifi
@@ -38,3 +45,4 @@ echo "setup nifi"
 installNifi
 setupNifi
 setupEnvVars
+addNars

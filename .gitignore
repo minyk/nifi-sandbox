@@ -4,3 +4,5 @@
 .idea
 *.iml
 tmp
+nars/*.nar
+
