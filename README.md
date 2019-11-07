@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.3, Kafka 1.0.0, Nifi 1.7.1 and Nifi Registry 0.2.0.
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.3, Kafka 1.0.0, Nifi 1.10.0 and Nifi Registry 0.5.0.
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
