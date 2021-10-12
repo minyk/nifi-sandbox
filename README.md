@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 2.7.3, Kafka 1.0.0, Nifi 1.11.0 and Nifi Registry 0.6.0.
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 3.2.2, Kafka 1.0.0, Nifi 1.14.0 and Nifi Registry 1.14.0.
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
@@ -24,7 +24,7 @@ Currently, Nifi and Nifi Registry integration needs to be setup by manually. See
 
 Some gotcha's.
 
-1. Make sure you download Vagrant v1.9.0 or higher.
+1. Make sure you download Vagrant v2.2.17 or higher.
 2. Make sure when you clone this project, you preserve the Unix/OSX end-of-line (EOL) characters. The scripts will fail with Windows EOL characters.
 3. Make sure you have 4Gb of free memory for the VM. You may change the Vagrantfile to specify smaller memory requirements.
 4. This project has NOT been tested with the VMWare provider for Vagrant.
@@ -100,7 +100,7 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=1.11.0
+NIFI_VERSION=1.14.0
 NIFI_NAME=nifi-${NIFI_VERSION}
 NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
 NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
@@ -112,17 +112,17 @@ NIFI_CONF=$NIFI_HOME/config
 # Make the VMs setup faster
 You can make the VM setup even faster if you pre-download the Hadoop, Kafka and Oracle JDK into the `/resources` directory.
 
-1. `/resources/hadoop-2.7.3.tar.gz`
+1. `/resources/hadoop-3.2.2.tar.gz`
 3. `/resources/jdk-8u152-linux-x64.gz`
 4. `/resources/kafka_2.11-1.0.0.tgz`
-5. `/resources/nifi-1.11.0-bin.tar.gz`
+5. `/resources/nifi-1.14.0-bin.tar.gz`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 
 # Web UI
 You can check the following URLs to monitor the Hadoop daemons.
 
-1. [NameNode] (http://10.10.10.101:50070/dfshealth.html)
+1. [NameNode] (http://10.10.10.101:9870/dfshealth.html)
 2. [Nifi] (http://10.10.10.101:8080/nifi)
 3. [NifiRegistry] (http://10.10.10.101:18080/nifi-registry)
 
