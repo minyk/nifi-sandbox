@@ -5,13 +5,13 @@ source "/vagrant/scripts/common.sh"
 function installLocalNifi {
 	echo "install nifi from local file"
 	FILE=/vagrant/resources/${NIFI_ARCHIVE}
-	tar -xzf $FILE -C /usr/local
+	unzip -q $FILE -d /usr/local
 }
 
 function installRemoteNifi {
 	echo "install nifi from remote file"
 	curl -o /vagrant/resources/${NIFI_ARCHIVE} -O -L ${NIFI_MIRROR_DOWNLOAD}
-	tar -xzf /vagrant/resources/${NIFI_ARCHIVE} -C /usr/local
+	unzip -q /vagrant/resources/${NIFI_ARCHIVE} -d /usr/local
 }
 
 function setupNifi {

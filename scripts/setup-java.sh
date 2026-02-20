@@ -2,9 +2,9 @@
 source "/vagrant/scripts/common.sh"
 
 function installRemoteJava {
-	echo "install open jdk"
-	yum install -y java-1.8.0-openjdk.x86_64 java-1.8.0-openjdk-devel
-	ln -s /usr/lib/jvm/jre /usr/local/java
+	echo "install open jdk 21"
+	yum install -y java-21-openjdk java-21-openjdk-devel
+	ln -s $(dirname $(dirname $(readlink -f $(which java)))) /usr/local/java
 }
 
 function setupEnvVars {

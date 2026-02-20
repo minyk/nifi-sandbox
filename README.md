@@ -3,7 +3,7 @@ Sandbox for Apache nifi
 
 # Introduction
 
-Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 3.2.2, Kafka 1.0.0, Nifi 1.14.0 and Nifi Registry 1.14.0.
+Vagrant project to spin up a cluster of 1 virtual machine with Hadoop 3.3.6, Kafka 3.9.0, Nifi 2.8.0 and Nifi Registry 2.8.0.
 
 * [Hadoop](http://hadoop.apache.org)
 * [Kafka](http://kafka.apache.org)
@@ -16,7 +16,7 @@ Currently, Nifi and Nifi Registry integration needs to be setup by manually. See
 
 1. [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. [Download and install Vagrant](http://www.vagrantup.com/downloads.html).
-3. Run ```vagrant box add geerlingguy/centos7```
+3. Run ```vagrant box add geerlingguy/rockylinux9```
 4. Git clone this project, and change directory (cd) into this project (directory).
 5. Run ```vagrant up``` to create the VM.
 6. Run ```vagrant ssh``` to get into your VM.
@@ -41,29 +41,22 @@ Edit variables in `scripts/common.sh`.
 
 ## OS
 
-`nifi-sandbox` uses CentOS 6.8 for default. It can be changed to other version/distribution. Just edit the `Vagrantfile`'s following lines:
+`nifi-sandbox` uses Rocky Linux 9 by default. It can be changed to other version/distribution. Just edit the `Vagrantfile`'s following lines:
 
 ```
-    node.vm.box = "geerlingguy/centos7"
+    node.vm.box = "geerlingguy/rockylinux9"
 ```
 
 Make sure the OS box has virtualbox guest addition.
 
 ## java
 
-Default settings use `jdk-8u91-linux-x64.tar.gz` or `java-1.8.0-openjdk.x86_64`. Edit following lines from `scripts/common.sh` for oracle JDK:
-
-```
-#java
-JAVA_ARCHIVE=jdk-8u91-linux-x64.tar.gz
-```
-
-In case of OpenJDK, edit `scripts/setup-java.sh`:
+Default settings use `java-21-openjdk`. Edit following lines from `scripts/setup-java.sh`:
 
 ```bash
 function installRemoteJava {
-	echo "install open jdk"
-	yum install -y java-1.8.0-openjdk.x86_64
+	echo "install open jdk 21"
+	yum install -y java-21-openjdk java-21-openjdk-devel
 }
 ```
 
@@ -72,9 +65,9 @@ function installRemoteJava {
 Hadoop version is described in `scripts/common.sh`:
 
 ```bash
-HADOOP_VERSION=2.7.3
+HADOOP_VERSION=3.3.6
 HADOOP_ARCHIVE=hadoop-${HADOOP_VERSION}.tar.gz
-HADOOP_MIRROR_DOWNLOAD=http://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/${HADOOP_ARCHIVE}
+HADOOP_MIRROR_DOWNLOAD=https://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/${HADOOP_ARCHIVE}
 ```
 
 To build the sandbox, Make sure `HADOOP_MIRROR_DOWNLOAD` is available for downloading.
@@ -85,10 +78,10 @@ Kafka version is described in `scripts/common.sh`
 
 ```bash
 #Kafka
-KAFKA_VERSION=1.0.0
-KAFKA_NAME=kafka_2.10-${KAFKA_VERSION}
+KAFKA_VERSION=3.9.0
+KAFKA_NAME=kafka_2.13-${KAFKA_VERSION}
 KAFKA_ARCHIVE=${KAFKA_NAME}.tgz
-KAFKA_MIRROR_DOWNLOAD=http://www.apache.org/dist/kafka/${KAFKA_VERSION}/${KAFKA_ARCHIVE}
+KAFKA_MIRROR_DOWNLOAD=https://archive.apache.org/dist/kafka/${KAFKA_VERSION}/${KAFKA_ARCHIVE}
 KAFKA_RES_DIR=/vagrant/resources/kafka
 KAFKA_HOME=/usr/local/kafka
 KAFKA_CONF=${KAFKA_HOME}/conf
@@ -100,22 +93,22 @@ Nifi version is described in `scripts/common.sh`
 
 ```bash
 #Nifi
-NIFI_VERSION=1.14.0
+NIFI_VERSION=2.8.0
 NIFI_NAME=nifi-${NIFI_VERSION}
-NIFI_ARCHIVE=${NIFI_NAME}-bin.tar.gz
-NIFI_MIRROR_DOWNLOAD=http://www.apache.org/dist/${NIFI_VERSION}/${NIFI_ARCHIVE}
+NIFI_ARCHIVE=${NIFI_NAME}-bin.zip
+NIFI_MIRROR_DOWNLOAD=https://archive.apache.org/dist/nifi/${NIFI_VERSION}/${NIFI_ARCHIVE}
 NIFI_RES_DIR=/vagrant/resources/nifi
 NIFI_HOME=/usr/local/nifi
 NIFI_CONF=$NIFI_HOME/config
 ```
 
 # Make the VMs setup faster
-You can make the VM setup even faster if you pre-download the Hadoop, Kafka and Oracle JDK into the `/resources` directory.
+You can make the VM setup even faster if you pre-download the Hadoop, Kafka and Nifi into the `/resources` directory.
 
-1. `/resources/hadoop-3.2.2.tar.gz`
-3. `/resources/jdk-8u152-linux-x64.gz`
-4. `/resources/kafka_2.11-1.0.0.tgz`
-5. `/resources/nifi-1.14.0-bin.tar.gz`
+1. `/resources/hadoop-3.3.6.tar.gz`
+2. `/resources/kafka_2.13-3.9.0.tgz`
+3. `/resources/nifi-2.8.0-bin.zip`
+4. `/resources/nifi-registry-2.8.0-bin.zip`
 
 The setup script will automatically detect if these files (with precisely the same names) exist and use them instead. If you are using slightly different versions, you will have to modify the script accordingly.
 

@@ -5,13 +5,13 @@ source "/vagrant/scripts/common.sh"
 function installLocalNifiRegistry {
 	echo "install Nifi Registry from local file"
 	FILE=/vagrant/resources/${NIFI_REGISTRY_ARCHIVE}
-	tar -xzf $FILE -C /usr/local
+	unzip -q $FILE -d /usr/local
 }
 
 function installRemoteNifiRegistry {
 	echo "install Nifi Registry from remote file"
 	curl -o /vagrant/resources/${NIFI_REGISTRY_ARCHIVE} -O -L ${NIFI_REGISTRY_MIRROR_DOWNLOAD}
-	tar -xzf /vagrant/resources/${NIFI_REGISTRY_ARCHIVE} -C /usr/local
+	unzip -q /vagrant/resources/${NIFI_REGISTRY_ARCHIVE} -d /usr/local
 }
 
 function setupNifiRegistry {

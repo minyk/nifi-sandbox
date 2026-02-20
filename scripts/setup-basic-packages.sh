@@ -2,4 +2,4 @@
 
 source "/vagrant/scripts/common.sh"
 
-yum install -y vim snappy snappy-devel
+yum install -y vim snappy snappy-devel unzip

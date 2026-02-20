@@ -6,7 +6,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	r = numNodes..1
 	(r.first).downto(r.last).each do |i|
 		config.vm.define "nifi-sandbox#{i}" do |node|
-			node.vm.box = "geerlingguy/centos7"
+			node.vm.box = "geerlingguy/rockylinux9"
 			node.vm.provider "virtualbox" do |v|
 			  v.name = "nifi-sandbox#{i}"
 			  v.customize ["modifyvm", :id, "--memory", "4096"]
